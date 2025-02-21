@@ -5,16 +5,19 @@ function App() {
   const [jsonInput, setJsonInput] = useState("");
   const [responseData, setResponseData] = useState(null);
   const [getResponseData, setGetResponseData] = useState(null);
-  const [selectedFilter, setSelectedFilter] = useState(""); // State for filter selection
+  const [selectedFilter, setSelectedFilter] = useState("");
 
   const handleSubmit = async () => {
     try {
       const parsedData = JSON.parse(jsonInput);
-      const res = await fetch("http://localhost:5000/bfhl", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: parsedData.data }),
-      });
+      const res = await fetch(
+        "https://karan-bajaj-assignment.onrender.com/bfhl",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ data: parsedData.data }),
+        }
+      );
       const data = await res.json();
       console.log("API Response:", data);
 
@@ -26,7 +29,10 @@ function App() {
 
   const handleGetRequest = async () => {
     try {
-      const res = await fetch("http://localhost:5000/bfhl", { method: "GET" });
+      const res = await fetch(
+        "https://karan-bajaj-assignment.onrender.com/bfhl",
+        { method: "GET" }
+      );
       const data = await res.json();
       setGetResponseData(data);
     } catch (error) {
