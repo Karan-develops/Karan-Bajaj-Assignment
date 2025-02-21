@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { config } from "dotenv";
-import bfhlRoutes from "./routes/bfhl.js"
+import bfhlRoutes from "./routes/bfhl.js";
 
 config();
 
@@ -27,4 +27,6 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
